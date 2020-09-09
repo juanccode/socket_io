@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Socket_io</title>
+  <script src="/socket.io/socket.io.js"></script>
+</head>
+<body>
+  <h1>ZONA PRIVADA POR SOCKET_IO</h1>
+  <script>
+    var socket = io();
+    socket.on('connect', () => {
+      console.log('conectado con socket')
+    })
+    socket.on('disconnect', () => {
+      console.log('PERDIMOS LA CONEXION')
+    })
+
+    socket.emit('mensaje', {nombre: "Juance"})
+
+    socket.on('mensaje', function (payload){
+      console.log('escuchando: ',payload)
+    })
+  </script>
+</body>
+</html>
